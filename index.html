@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Styles/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>Base de datos de alumnos</title>
+</head>
+
+<body>
+    <aside class="left-side">
+        <!--* Ingreso de datos  -->
+        <div id="main-container">
+
+            <h1 id="newTitle">Ingresar alumno</h1>
+
+            <label for="studentName">Nombre</label>
+            <input id="studentName" type="text">
+
+            <label for="studentLastName">Apellido</label>
+            <input id="studentLastName" type="text">
+
+            <label for="studentAge">Edad</label>
+            <input id="studentAge" type="text">
+
+            <button id="enrolBtn">Ingresar alumno</button>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        <!--* Busqueda de datos -->
+        <div id="second-container">
+
+            <h1>Buscar alumno</h1>
+            <label for="searchStudent">Ingrese el nombre del alumno</label>
+            <input id="searchStudent" type="text">
+            <button>Buscar</button>
+
+        </div>
+
+    </aside>
+
+    <!-- *impresion de datos en pantalla -->
+    <main class="rigth-side">
+        <table id="table">
+            <tr id="table-head">
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th>Materias Inscritas</th>
+                <th>Calificaciones</th>
+            </tr>
+
+            <tr>
+                <td>Miguel</td>
+                <td>Miranda</td>
+                <td>22</td>
+                <td>5</td>
+                <td>10,5,10,6,9</td>
+            </tr>
+        </table>
+    </main>
+
+
+    <script src="./controllers/index.js"></script>
+</body>
+
+</html>
