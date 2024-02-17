@@ -26,16 +26,16 @@
 // 5.- Preferentemente todo guarden en LocalStorage para que puedan tener persistencia de datos (Opcional x2)
 
 
-// ?QUE NECESITO HACER?
-// *primero necesito traer elementos del html a javascript, los cuales serán los inputs que daran la informacion de entrada para despues esta ser almacenada
+
 
 
 const studentName = document.getElementById("studentName");
 const studentLastName = document.getElementById("studentLastName");
 const studentAge = document.getElementById("studentAge");
+const enrolledSubjects = null;
+const grades = null
 const enrolBtn = document.getElementById("enrolBtn")
 const dataBase = [];
-
 
 class Alumno {
     constructor(name, lastName, age, enrolledSubjects, grades) {
@@ -47,16 +47,16 @@ class Alumno {
     };
 };
 
-let student = new Alumno (studentName, studentLastName, studentAge, null,null)
+// let student = new Alumno(studentName, studentLastName, studentAge, null, null)
 
-console.log(student);
-
-
-
-
-
-
-
+enrolBtn.addEventListener("click", (event) => {
+    let alumno = new Alumno(studentName.value, studentLastName.value, studentAge.value, null, null);
+    dataBase.push(alumno)
+    studentName.value = ""
+    studentLastName.value = ""
+    studentAge.value = ""
+    console.log(alumno);
+});
 
 
 
