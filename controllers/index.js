@@ -37,55 +37,117 @@ const searchStudent = document.getElementById("searchStudent");
 const searchBtn = document.getElementById("searchBtn");
 // *ALMACENAMIENTO
 const dataBase = [];
-const almacenamiento = [
-
-];
 
 
 // *FUNCIONES
 // ? Devuelve un string en mayusculas y sin espacios en extremos 
 const toUpperCase = (stringVariable) => { return stringVariable.trim().toUpperCase() };
+
 // ? Convierte un string en array (su delimitador son todas los caracteres especiales excepto "-"), y lo devuelve
 const stringToArray = (string) => { return (string.split(/[^a-zA-Z0-9-]+/g)) };
+
 // ? Devuelve una cadena de numeros, esta delimitada por todos los caracteres especiales excepto "."
 const numericArray = (numbers) => { return numbers.split(/[^\d.]+/).map(Number) };
 
-
-// *CREACION DE CLASE ALUMNO
-class Alumno {
-    constructor(studentName, studentLastName, studentAge, enrolledSubjects, studentGrades) {
-        this.studentName = studentName;
-        this.studentLastName = studentLastName;
-        this.studentAge = studentAge;
-        this.enrolledSubjects = enrolledSubjects;
-        this.studentGrades = studentGrades
+// ? convierte un string numerico en numero y lo devuelve, en caso de string sencillo lo devuelve en mayusculas 
+const processData = (inputValue) => {
+    let numericDatum = parseInt(inputValue);
+    if (!isNaN(numericDatum)) {
+        return numericDatum
+    } else {
+        return toUpperCase(inputValue)
     };
 };
 
+// *CREACION DE CLASE ALUMNO
+class Alumno {
+    constructor(name, lastName, age, subjects, grades) {
+        this.name = toUpperCase(name);
+        this.lastName = toUpperCase(lastName);
+        this.age = parseInt(age);
+        this.subjects = stringToArray(toUpperCase(subjects));
+        this.grades = numericArray(grades);
+    };
+};
 
 // * EVENTO CLICK "AGREGAR ALUMNO"
-// enrolBtn.addEventListener("click", (event) => {
-//     let student = new Alumno(toUpperCase(studentName.value), toUpperCase(studentLastName.value), parseInt(studentAge.value), stringToArray(toUpperCase(enrolledSubjects.value)), numericArray(studentGrades.value));
-//     dataBase.push(student)
-//     studentName.value = ""
-//     studentLastName.value = ""
-//     studentAge.value = "";
-//     enrolledSubjects.value = "";
-//     studentGrades.value = ""
-// });
+enrolBtn.addEventListener("click", (event) => {
+    let student = new Alumno(studentName.value, studentLastName.value, studentAge.value, enrolledSubjects.value, studentGrades.value);
+    dataBase.push(student);
 
-// !PRUEBA CON INSTANCIAS
-let nuevoAlumno1 = new Alumno(toUpperCase("Miguel"), toUpperCase("Miranda"), parseInt("18 años"), stringToArray(toUpperCase("Matematicas, Geografia, Comunicacion-Cientifica")), numericArray("10,8.5,7.5"))
-let nuevoAlumno2 = new Alumno(toUpperCase("Ana"), toUpperCase("Miranda"), parseInt("20 años"), stringToArray(toUpperCase("Ciencias-sociales, fisica")),numericArray("8.5-9.8"))
-almacenamiento.push(nuevoAlumno1)
-almacenamiento.push(nuevoAlumno2)
-typeof almacenamiento[0].studentGrades[0]
+    let studentTable = document.getElementById("register-table").getElementsByTagName("tbody")[0];
+    let newRow = studentTable.insertRow();
+    let cell1 = newRow.insertCell(0);
+    cell1.innerHTML = student.name;
+    let cell2 = newRow.insertCell(1);
+    cell2.innerHTML = student.lastName;
+    let cell3 = newRow.insertCell(2)
+    cell3.innerHTML = student.age;
+    let cell4 = newRow.insertCell(3)
+    cell4.innerHTML = student.subjects;
+    let cell5 = newRow.insertCell(4)
+    cell5.innerHTML = student.grades
 
+    studentName.value = ""
+    studentLastName.value = ""
+    studentAge.value = "";
+    enrolledSubjects.value = "";
+    studentGrades.value = ""
+});
 
 
 // *EVENTO CLICK "BUSCAR"
 searchBtn.addEventListener("click", () => {
+    let searchValue = toUpperCase(searchStudent.value)
+    let processValue = processData(searchValue)
 
-});
+    const searchedValue = dataBase.filter(student => student.name.includes(processValue)
+        || student.lastName.includes(processValue)
+        || student.age === processValue
+        || student.subjects.includes(processValue)
+        || student.grades === processValue
+    );
+    let tableBody = document.getElementById("search-table").getElementsByTagName("tbody")[0];
+    tableBody.innerHTML = "";
+
+    searchedValue.forEach(student => {
+        let row = document.createElement("tr");
+        let nameCell = document.createElement("td");
+        nameCell.textContent = student.name;
+        row.appendChild(nameCell);
+        let lastNameCell = document.createElement("td");
+        lastNameCell.textContent = student.lastName;
+        row.appendChild(lastNameCell);
+        let ageCell = document.createElement("td");
+        ageCell.textContent = student.age;
+        row.appendChild(ageCell);
+        let subjectsCell = document.createElement("td");
+        subjectsCell.textContent = student.subjects.join(",")
+        row.appendChild(subjectsCell);
+        let gradesCell = document.createElement("td");
+        gradesCell.textContent = student.grades;
+        row.appendChild(gradesCell)
+        tableBody.appendChild(row)
+    })
 
 
+})
+
+
+
+
+
+
+
+
+
+// const ordenamientoAlmacenamientoNombres = almacenamiento.sort((a, b) => {
+//     let nombreA = a.studentName;
+//     let nombreB = b.studentName;
+//     if (nombreA < nombreB) {
+//         return -1
+//     } if (nombreA > nombreB) {
+//         return 1
+//     };
+// });
+// ordenamientoAlmacenamientoNombres;
