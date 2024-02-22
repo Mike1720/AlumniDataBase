@@ -40,9 +40,105 @@ let nuevaAlumna = {
 // almacenamietoDataBase[0] //Miguel
 // almacenamietoDataBase[1] //Ana
 
-const numericArray = (numbers) => { return numbers.split(/[^.,\w\s]/).map(Number)};
+const numericArray = (numbers) => { return numbers.split(/[^.,\w\s]/).map(Number) };
 console.log(numericArray(alumnaCalificacionesValor));
 
 
 
 // /[^0-9.-]+/g
+
+
+
+let nameInput = "Miguel Angel              Miranda"
+let nameDB = toUpperCase(nameInput)
+
+let searchName = "Mi"
+let searchNameValue = toUpperCase(searchName)
+
+const searchValue = () => {
+    if (nameDB.includes(searchNameValue)) {
+        console.log(nameDB);
+    } else {
+        console.log("no encontrado");
+    }
+}
+
+//todo PARTE 1 DE LA FUNCION
+let valorBuscadoInputString1 = "MiGu"; //! lo que escribe el usuario
+let valorBuscadoInputString2 = "EDSON"
+let valorBuscadoInputString3 = "KARE"
+let valorBuscadoInputString4 = "Ana"
+
+
+// let nombreAlmacenado = almacenamiento[0].studentName; // !Dato almacenado previamente en el registro
+// // !funcion
+// const buscarValor = (value) => {
+//     if (nombreAlmacenado.includes(value)) {
+//         return nombreAlmacenado;
+//     } else {
+//         return `el dato ${value} no se encuentra almacenado`
+//     }
+// };
+// buscarValor(toUpperCase(valorBuscadoInputString1));
+
+// let valor1 = "15asda"
+// let valor2 = "15 años"
+// let valorStringNumerico = "26gisolo"
+// let valor_1 = "miguel";
+
+
+
+// const searchedValue = (value) => {
+
+//     let search = processData(value);
+//     // for (let i = 0; i < almacenamiento.length; i++) {
+//     // if (almacenamiento[i].studentName.includes(search)) {
+//     //     return almacenamiento[i].studentName
+//     // } if (almacenamiento[i].studentLastName.includes(search)) {
+//     //     return almacenamiento[i].studentLastName
+//     // } if (almacenamiento[i].enrolledSubjects.includes(search)) {
+//     //     return almacenamiento[i].enrolledSubjects
+//     // }
+
+
+// };
+// almacenamiento
+// searchedValue("miguel");
+// searchedValue("mira");
+// searchedValue("karen");
+// searchedValue("faus");
+// searchedValue("jahir")//
+// searchedValue("edson")
+// searchedValue("arquitectura")
+// searchedValue("matematicas")//
+
+searchBtn.addEventListener("click", (event) => {
+    let result = null;
+    for (let i = 0; i < almacenamiento.length; i++) {
+        if (toUpperCase(searchStudent.value) === almacenamiento[i].studentName) {
+            result = almacenamiento[i].studentName
+        }
+        return alert(result);
+    }
+    searchStudent.value = ""
+})
+
+
+
+
+
+const searchValues = (value) => {
+
+    let processValue = processData(value)
+    const searchedValue = dataBase.filter(student => {
+        return student.name.includes(processValue)
+            || student.lastName.includes(processValue)
+            || student.age === processValue
+            || student.subjects.includes(processValue)
+            || student.grades === processValue
+    });
+    return searchedValue
+}
+
+searchsValue(valorBuscadoInputString)
+

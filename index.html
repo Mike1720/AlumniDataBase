@@ -13,24 +13,17 @@
     <aside id="left-side">
         <!--* Ingreso de datos  -->
         <div id="form">
-
             <h1>Ingresar alumno</h1>
-
             <label for="studentName">Nombre</label>
             <input id="studentName" type="text">
-
             <label for="studentLastName">Apellido</label>
             <input id="studentLastName" type="text">
-
             <label for="studentAge">Edad</label>
             <input id="studentAge" type="text">
-
             <label for="enrolledSubjects">Materias inscritas.</label>
             <input id="enrolledSubjects" type="text" placeholder="Ejemplo: Comunicacion-Cientifica, Historia">
-
             <label for="grades">Calificaciones</label>
             <input id="grades" type="text" placeholder="Ejemplo: 9.5, 5.4">
-
             <button id="enrolBtn">Ingresar alumno</button>
 
         </div>
@@ -46,35 +39,34 @@
 
     <!-- *impresion de datos en pantalla -->
     <main id="right-side">
-        <table id="table">
-            <tr id="table-head">
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Edad</th>
-                <th>Boleta</th>
-                <th>Numero de materias inscritas</th>
-                <th>Materias Inscritas</th>
-                <th>Calificaciones</th>
-            </tr>
+        <table id="register-table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Edad</th>
+                    <th>Materias Inscritas</th>
+                    <th>Calificaciones</th>
+                </tr>
+            </thead>
+            <tbody>
 
-            <tr>
-                <td>Miguel</td>
-                <td>Miranda</td>
-                <td>22</td>
-                <td>20240000</td>
-                <td>5</td>
-                <td>Historia, Fisica, Ciencias Naturales,Historia, Fisica, Ciencias-Naturales</td>
-                <td>10,5,10,6,9</td>
-            </tr>
-            <tr>
-                <td>Miguel</td>
-                <td>Miranda</td>
-                <td>22</td>
-                <td>20240000</td>
-                <td>5</td>
-                <td>Historia, Fisica, Ciencias-Naturales</td>
-                <td>10,5,10,6,9</td>
-            </tr>
+            </tbody>
+        </table>
+
+        <table id="search-table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Edad</th>
+                    <th>Materias Inscritas</th>
+                    <th>Calificaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
         </table>
     </main>
 

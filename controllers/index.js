@@ -37,6 +37,9 @@ const searchStudent = document.getElementById("searchStudent");
 const searchBtn = document.getElementById("searchBtn");
 // *ALMACENAMIENTO
 const dataBase = [];
+const almacenamiento = [
+
+];
 
 
 // *FUNCIONES
@@ -45,7 +48,7 @@ const toUpperCase = (stringVariable) => { return stringVariable.trim().toUpperCa
 // ? Convierte un string en array (su delimitador son todas los caracteres especiales excepto "-"), y lo devuelve
 const stringToArray = (string) => { return (string.split(/[^a-zA-Z0-9-]+/g)) };
 // ? Devuelve una cadena de numeros, esta delimitada por todos los caracteres especiales excepto "."
-const numericArray = (numbers) => { return numbers.split(/[^\d.]+/)};
+const numericArray = (numbers) => { return numbers.split(/[^\d.]+/).map(Number) };
 
 
 // *CREACION DE CLASE ALUMNO
@@ -60,13 +63,29 @@ class Alumno {
 };
 
 
-// * EVENTO CLICK
-enrolBtn.addEventListener("click", (event) => {
-    let student = new Alumno(toUpperCase(studentName.value), toUpperCase(studentLastName.value), parseInt(studentAge.value), stringToArray(toUpperCase(enrolledSubjects.value)), numericArray(studentGrades.value));
-    dataBase.push(student)
-    studentName.value = ""
-    studentLastName.value = ""
-    studentAge.value = "";
-    enrolledSubjects.value = "";
-    studentGrades.value = ""
+// * EVENTO CLICK "AGREGAR ALUMNO"
+// enrolBtn.addEventListener("click", (event) => {
+//     let student = new Alumno(toUpperCase(studentName.value), toUpperCase(studentLastName.value), parseInt(studentAge.value), stringToArray(toUpperCase(enrolledSubjects.value)), numericArray(studentGrades.value));
+//     dataBase.push(student)
+//     studentName.value = ""
+//     studentLastName.value = ""
+//     studentAge.value = "";
+//     enrolledSubjects.value = "";
+//     studentGrades.value = ""
+// });
+
+// !PRUEBA CON INSTANCIAS
+let nuevoAlumno1 = new Alumno(toUpperCase("Miguel"), toUpperCase("Miranda"), parseInt("18 años"), stringToArray(toUpperCase("Matematicas, Geografia, Comunicacion-Cientifica")), numericArray("10,8.5,7.5"))
+let nuevoAlumno2 = new Alumno(toUpperCase("Ana"), toUpperCase("Miranda"), parseInt("20 años"), stringToArray(toUpperCase("Ciencias-sociales, fisica")),numericArray("8.5-9.8"))
+almacenamiento.push(nuevoAlumno1)
+almacenamiento.push(nuevoAlumno2)
+typeof almacenamiento[0].studentGrades[0]
+
+
+
+// *EVENTO CLICK "BUSCAR"
+searchBtn.addEventListener("click", () => {
+
 });
+
+
